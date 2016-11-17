@@ -3,7 +3,8 @@ package com.hitherejoe.androidboilerplate.data.remote;
 import android.content.Context;
 
 import com.hitherejoe.androidboilerplate.BuildConfig;
-import com.hitherejoe.androidboilerplate.data.model.Character;
+import com.hitherejoe.androidboilerplate.data.ProfitConstants;
+import com.hitherejoe.androidboilerplate.data.model.Config;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -14,19 +15,16 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 import rx.Observable;
 
-public interface AndroidBoilerplateService {
+public interface ConfigService {
 
-    String ENDPOINT = "http://swapi.co/api/";
+    String ENDPOINT = ProfitConstants.CONFIG_ENDPOINT;
 
-    @GET("people/{personId}")
-    Observable<Character> getCharacter(@Path("personId") int id);
+    @GET("profit-config.json")
+    Observable<Config> getConfig();
 
-    /********
-     * Factory class that sets up a new boilerplate service
-     *******/
     class Factory {
 
-        public static AndroidBoilerplateService makeAndroidBoilerplateService(Context context) {
+        public static ConfigService makeConfigService(Context context) {
             OkHttpClient okHttpClient = new OkHttpClient();
             HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
             logging.setLevel(BuildConfig.DEBUG ? HttpLoggingInterceptor.Level.BODY
@@ -34,12 +32,12 @@ public interface AndroidBoilerplateService {
 //            okHttpClient.interceptors().add(logging);
 
             Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl(AndroidBoilerplateService.ENDPOINT)
+                    .baseUrl(ConfigService.ENDPOINT)
                     .client(okHttpClient)
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .build();
-            return retrofit.create(AndroidBoilerplateService.class);
+            return retrofit.create(ConfigService.class);
         }
 
     }

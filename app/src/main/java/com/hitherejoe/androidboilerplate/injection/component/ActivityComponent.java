@@ -8,6 +8,7 @@ import com.hitherejoe.androidboilerplate.ui.activity.CharacterActivity;
 import com.hitherejoe.androidboilerplate.ui.activity.DetailActivity;
 import com.hitherejoe.androidboilerplate.ui.activity.MainActivity;
 import com.hitherejoe.androidboilerplate.ui.fragment.DetailFragment;
+import com.hitherejoe.androidboilerplate.ui.splash.SplashActivity;
 
 import dagger.Component;
 
@@ -21,5 +22,8 @@ public interface ActivityComponent {
     void inject(DetailActivity detailActivity);
 
     void inject(DetailFragment detailFragment);
+
+    void inject(SplashActivity splashActivity);
+
 }
 

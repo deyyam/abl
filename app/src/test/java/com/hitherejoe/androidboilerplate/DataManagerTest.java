@@ -4,6 +4,7 @@ import com.hitherejoe.androidboilerplate.data.DataManager;
 import com.hitherejoe.androidboilerplate.data.local.PreferencesHelper;
 import com.hitherejoe.androidboilerplate.data.model.Character;
 import com.hitherejoe.androidboilerplate.data.remote.AndroidBoilerplateService;
+import com.hitherejoe.androidboilerplate.data.remote.ConfigService;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -22,12 +23,16 @@ import static org.mockito.Mockito.when;
 public class DataManagerTest {
 
     @Mock AndroidBoilerplateService mMockAndroidBoilerplateService;
+    @Mock
+    ConfigService mMockConfigService;
+
     @Mock PreferencesHelper mMockPreferencesHelper;
+
     DataManager mDataManager;
 
     @Before
     public void setUp() {
-        mDataManager = new DataManager(mMockAndroidBoilerplateService, mMockPreferencesHelper);
+        mDataManager = new DataManager(mMockAndroidBoilerplateService, mMockPreferencesHelper,mMockConfigService);
     }
 
     @Test

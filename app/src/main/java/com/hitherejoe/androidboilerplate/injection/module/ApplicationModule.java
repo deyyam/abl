@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.hitherejoe.androidboilerplate.data.remote.AndroidBoilerplateService;
+import com.hitherejoe.androidboilerplate.data.remote.ConfigService;
 import com.hitherejoe.androidboilerplate.injection.ApplicationContext;
 
 import javax.inject.Singleton;
@@ -38,6 +39,12 @@ public class ApplicationModule {
     @Singleton
     AndroidBoilerplateService provideAndroidBoilerplateService() {
         return AndroidBoilerplateService.Factory.makeAndroidBoilerplateService(mApplication);
+    }
+
+    @Provides
+    @Singleton
+    ConfigService provideConfigServiceService() {
+        return ConfigService.Factory.makeConfigService(mApplication);
     }
 
 }

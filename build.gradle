@@ -5,7 +5,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.5.0'
+        classpath 'com.android.tools.build:gradle:2.2.2'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -16,4 +16,28 @@ allprojects {
     repositories {
         jcenter()
     }
+}
+
+ext {
+    // Sdk and tools
+    minSdkVersion = 16
+    targetSdkVersion = 25
+    compileSdkVersion = 25
+    buildToolsVersion = '25'
+
+    // App dependencies
+    playServicesVersion='9.8.0'
+    supportLibraryVersion = '25.0.0'
+    retrofitVerion = '2.1.0'
+    okhttpVersion='3.0.0'
+    daggerVersion = '2.5'
+    dexmakerVersion = '1.4'
+    hamcrestVersion = '1.3'
+    expressoVersion = '2.2.1'
+    runnerVersion = '0.4'
+    butterknifeVersion = '8.4.0'
+    autoValueVersion = '1.3'
+    autoValueGsonVersoion = '0.4.2'
+    junitVersion='4.12'
+    mockitoVersion='1.10.19'
 }
