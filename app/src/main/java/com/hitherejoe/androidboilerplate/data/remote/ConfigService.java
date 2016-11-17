@@ -25,11 +25,7 @@ public interface ConfigService {
     class Factory {
 
         public static ConfigService makeConfigService(Context context) {
-            OkHttpClient okHttpClient = new OkHttpClient();
-            HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-            logging.setLevel(BuildConfig.DEBUG ? HttpLoggingInterceptor.Level.BODY
-                    : HttpLoggingInterceptor.Level.NONE);
-//            okHttpClient.interceptors().add(logging);
+            OkHttpClient okHttpClient = OkHttpClientFactory.getHttpClient(context);
 
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(ConfigService.ENDPOINT)

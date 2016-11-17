@@ -60,6 +60,7 @@ public class SplashActivity extends BaseActivity {
     }
 
     private void loadConfig() {
+        //TODO Check offline
         if (DataUtils.isNetworkAvailable(this)) {
             mSubscriptions.add(mDataManager.getConfig()
                     .observeOn(AndroidSchedulers.mainThread())
@@ -79,7 +80,7 @@ public class SplashActivity extends BaseActivity {
 
                         @Override
                         public void onNext(Config config) {
-                            Timber.e("Config sucessfully retrived" + config.toString());
+                            Timber.i("Config sucessfully retrived" + config.toString());
                             mProgressBar.setVisibility(View.GONE);
                         }
                     }));
